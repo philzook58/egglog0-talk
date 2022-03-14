@@ -1,0 +1,388 @@
+%% For double-blind review submission, w/o CCS and ACM Reference (max submission space)
+\documentclass[sigplan,10pt,review,anonymous]{acmart}
+\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For double-blind review submission, w/ CCS and ACM Reference
+%\documentclass[sigplan,review,anonymous]{acmart}\settopmatter{printfolios=true}
+%% For single-blind review submission, w/o CCS and ACM Reference (max submission space)
+%\documentclass[sigplan,review]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For single-blind review submission, w/ CCS and ACM Reference
+%\documentclass[sigplan,review]{acmart}\settopmatter{printfolios=true}
+%% For final camera-ready submission, w/ required CCS and ACM Reference
+%\documentclass[sigplan]{acmart}\settopmatter{}
+
+
+%% Conference information
+%% Supplied to authors by publisher for camera-ready submission;
+%% use defaults for review submission.
+\acmConference[PL'18]{ACM SIGPLAN Conference on Programming Languages}{January 01--03, 2018}{New York, NY, USA}
+\acmYear{2018}
+\acmISBN{} % \acmISBN{978-x-xxxx-xxxx-x/YY/MM}
+\acmDOI{} % \acmDOI{10.1145/nnnnnnn.nnnnnnn}
+\startPage{1}
+
+%% Copyright information
+%% Supplied to authors (based on authors' rights management selection;
+%% see authors.acm.org) by publisher for camera-ready submission;
+%% use 'none' for review submission.
+\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\copyrightyear{2018}           %% If different from \acmYear
+
+%% Bibliography style
+\bibliographystyle{ACM-Reference-Format}
+%% Citation style
+%\citestyle{acmauthoryear}  %% For author/year citations
+%\citestyle{acmnumeric}     %% For numeric citations
+%\setcitestyle{nosort}      %% With 'acmnumeric', to disable automatic
+                            %% sorting of references within a single citation;
+                            %% e.g., \cite{Smith99,Carpenter05,Baker12}
+                            %% rendered as [14,5,2] rather than [2,5,14].
+%\setcitesyle{nocompress}   %% With 'acmnumeric', to disable automatic
+                            %% compression of sequential references within a
+                            %% single citation;
+                            %% e.g., \cite{Baker12,Baker14,Baker16}
+                            %% rendered as [2,3,4] rather than [2-4].
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Note: Authors migrating a paper from traditional SIGPLAN
+%% proceedings format to PACMPL format must update the
+%% '\documentclass' and topmatter commands above; see
+%% 'acmart-pacmpl-template.tex'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Some recommended packages.
+\usepackage{booktabs}   %% For formal tables:
+                        %% http://ctan.org/pkg/booktabs
+\usepackage{subcaption} %% For complex figures with subfigures/subcaptions
+                        %% http://ctan.org/pkg/subcaption
+\usepackage{listings}
+
+\lstset{frame=tb,
+  language=Prolog,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+
+%% Title information
+\title{Hatching a Datalog:}         %% [Short Title] is optional;
+                                        %% when present, will be used in
+                                        %% header instead of Full Title.
+%\titlenote{with title note}             %% \titlenote is optional;
+                                        %% can be repeated if necessary;
+                                        %% contents suppressed with 'anonymous'
+\subtitle{Horn Clauses Modulo Congruence (Equality?) using Egg}                     %% \subtitle is optional
+%\subtitlenote{with subtitle note}       %% \subtitlenote is optional;
+                                        %% can be repeated if necessary;
+                                        %% contents suppressed with 'anonymous'
+
+
+%% Author information
+%% Contents and number of authors suppressed with 'anonymous'.
+%% Each author should be introduced by \author, followed by
+%% \authornote (optional), \orcid (optional), \affiliation, and
+%% \email.
+%% An author may have multiple affiliations and/or emails; repeat the
+%% appropriate command.
+%% Many elements are not rendered, but should be provided for metadata
+%% extraction tools.
+
+%% Author with single affiliation.
+\author{Philip Zucker}
+\authornote{with author1 note}          %% \authornote is optional;
+                                        %% can be repeated if necessary
+\orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+\affiliation{
+  \position{Position1}
+  \department{Department1}              %% \department is recommended
+  \institution{Institution1}            %% \institution is required
+  \streetaddress{Street1 Address1}
+  \city{City1}
+  \state{State1}
+  \postcode{Post-Code1}
+  \country{Country1}                    %% \country is recommended
+}
+\email{pzucker@draper.com}          %% \email is recommended
+
+%% Author with two affiliations and emails.
+%\author{First2 Last2}
+%\authornote{with author2 note}          %% \authornote is optional;
+                                        %% can be repeated if necessary
+%\orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+%\affiliation{
+%  \position{Position2a}
+%  \department{Department2a}             %% \department is recommended
+%  \institution{Institution2a}           %% \institution is required
+%  \streetaddress{Street2a Address2a}
+%  \city{City2a}
+%  \state{State2a}
+%  \postcode{Post-Code2a}
+%  \country{Country2a}                   %% \country is recommended
+%}
+%\email{first2.last2@inst2a.com}         %% \email is recommended
+%\affiliation{
+%  \position{Position2b}
+%  \department{Department2b}             %% \department is recommended
+ % \institution{Institution2b}           %% \institution is required
+ % \streetaddress{Street3b Address2b}
+ % \city{City2b}
+ % \state{State2b}
+ % \postcode{Post-Code2b}
+ % \country{Country2b}                   %% \country is recommended
+%}
+% \email{first2.last2@inst2b.org}         %% \email is recommended
+
+
+%% Abstract
+%% Note: \begin{abstract}...\end{abstract} environment must come
+%% before \maketitle command
+\begin{abstract}
+Text of abstract \ldots.
+\end{abstract}
+
+
+%% 2012 ACM Computing Classification System (CSS) concepts
+%% Generate at 'http://dl.acm.org/ccs/ccs.cfm'.
+\begin{CCSXML}
+<ccs2012>
+<concept>
+<concept_id>10011007.10011006.10011008</concept_id>
+<concept_desc>Software and its engineering~General programming languages</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+<concept>
+<concept_id>10003456.10003457.10003521.10003525</concept_id>
+<concept_desc>Social and professional topics~History of programming languages</concept_desc>
+<concept_significance>300</concept_significance>
+</concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~General programming languages}
+\ccsdesc[300]{Social and professional topics~History of programming languages}
+%% End of generated code
+
+
+%% Keywords
+%% comma separated list
+\keywords{keyword1, keyword2, keyword3}  %% \keywords are mandatory in final camera-ready submission
+
+
+%% \maketitle
+%% Note: \maketitle command must come after title commands, author
+%% commands, abstract environment, Computing Classification System
+%% environment and commands, and keywords command.
+\maketitle
+
+
+\section{Introduction}
+There are many striking similarities between the worlds of term rewriting, logic programming, and databases. It can be nontrivial but useful to translate insights between them. This talk is about a prototype implementation Egglog0 built upon the e-graph framework library egg and the modelling power equality saturation gains when extended to logic programming constructs.
+
+% maybe just have a table here.
+
+\section{Term Rewriting and Logic Programming}
+I don't have space for this.
+
+\section{Egglog0}
+
+Egglog0 is a prototype system built around the egg equality saturation library. It is designed to extend egg with a naive implementation of multipatterns and bring to the forefront the analogy between equality saturation and datalog saturation.
+
+Similar to datalog, base facts are ground terms.
+\begin{lstlisting}
+human(socrates).
+\end{lstlisting}
+Operationally this corresponds to inserting this ground term into the backing e-graph. To simplify the impementation, there is no distinction between predicates and terms. This is odd but can also be useful.
+
+Clauses are represented using prolog convention of capitalized names for variables.
+
+TODO: use example that has terms in it, not just datalog
+
+\begin{lstlisting}
+edge(a,b).
+edge(b,c).
+path(X, Y) :- edge(X, Y).
+path(X, Y) :- path(X, Z), edge(Z, Y).
+
+\end{lstlisting}
+Operationally a term appear on the right is a multipattern to seek in the e-graph. A ground term is produced and inserted ino the e-graph by instantiating the pattern on the left.
+
+NOTE: show multiheads?
+
+The features so far have not used the e-graph in any intrinsic way. This subset of the language, "hashlog", could be implemented by a backing hash cons data structure instead and is available in a datalog that supports algebraic datatypes.
+
+Egglog0 also possess special built in relation \lstinline{=} backed by e-graph equality. Base facts may be inserted into the e-graph.
+
+Rewrite rules can be encoded as Horn clauses. Pattern variables are best not thought of as do not binding to terms, but instead to e-classes of equivalent terms.
+
+\begin{lstlisting}
+  add(Y,X) = E :- add(X,Y) = E
+\end{lstlisting}
+
+Operationally, an \lstinline{=} the body corresponds to a check that the patterns were found in the same class,
+in the head of a clause correspond to called `union!` on two eclasses of the constructed terms. In principle \lstinline{=} could be used in a `-+` mode, efficiently generating members of an eclass, however the details of the egg interface prevent this as a user of the library.
+
+Because standard equality saturation is a common use case, there is custom syntax sugar for it and also bidirectional rewriting, which expands to two unidirectional rewriting clauses.
+
+\begin{lstlisting}
+plus(X,Y) <- plus(Y,X).
+plus(X,plus(Y,Z)) <-> plus(plus(X,Y),Z).
+\end{lstlisting}
+
+Finally, to recover information out of the e-graph, there are queries. Queries are run after possibly early termination of the equality saturation process. They are implemented via the exact same mechanism as multipatterns. Internally, a substitution dictionary of variables to eclasses is returned. To print out a concrete ground term, a small representative term is extracted out of the variables eclass.
+
+\begin{lstlisting}
+?- add(succ(zero),succ(Y)) = Z.
+\end{lstlisting}
+
+\section{Applications}
+Why bother with this extra expressivity? In this section we demonstrate a number of applications that are not easily expressible as equality saturation or datalog on their own.
+
+\subsection{Injectivity, unification, and Eta Rules}
+One simple application is being able to express the axiom of injectivity of a constructor. This axiom is in some sense the dual of the congruence axiom which is applied automatically in the e-graph.
+
+\begin{lstlisting}
+X = Y, Xs = Ys :- cons(X,Xs) = cons(Y,Ys).
+\end{lstlisting}
+
+A related axiom is that describing the properties of projectors of a pair.
+
+\begin{lstlisting}
+pair(A,B) = Z :- proj1(Z) = A, proj2(Z) = B.
+proj1(Z) = A, proj2(Z) = B :- pair(A,B) = Z.
+\end{lstlisting}
+
+From these rules, one can derive the computation rule
+\begin{lstlisting}
+Z <- pair(proj1(Z), proj2(Z)).
+\end{lstlisting}
+However this rule is weaker and the left to right direction will never saturate and choke the e-graph with terms.
+
+\subsection{Equation Solving Rules}
+A common manipulation in algebraic reasoning is to manipulate equations by applying the same operation to both sides. This is not a rewrite rule persay, but instead manipulating the equation itself. This is often used for the purposes of variable isolation and then substitution. The e-graph by it's very nature immediately understands the substitution, but we must teach it the available manipulations of equations. As an example, the following axiom manipulates the Y variable to isolation. 
+\begin{lstlisting}
+  sub(Z,X) = Y :- add(X,Y) = Z
+\end{lstlisting}
+
+Although Egglog0 does not currently implement this, it is in possible to extract from the egraph a term containing the least number of undesirable variables that are in the same class as a term y.
+
+\subsection{Reflection and equational logic}
+While like datalog, the presence of predicate "terms" in the e-graph database can be considered as an assertion of their truth, the convention of modeling predicates as functions into \lstinline{Bool} allows one to manipulate and talk about predicates in the absence of knowledge of their truth. The existence of a predicate term in the same eclass as \lstinline{true} is then seen as evidence of it's truth. More interestingly, the existence of being in the same eclass as \lstinline{false} can be seen as evidence that the predicate has determined not to be true. The analog of the lack of a predicate in the e-graph cannot be seen as evidence of it's falsehood. Equality saturation as a reasoning tool has constructive character in this sense. This is the analog of the situation in datalog implementations, where negation may only be considered in the presence of a stratification.
+
+This encoding allows for ordinary boolean algerbaic manipulation of logical formula. One can reflect the notion of e-graph equality itself into a term \lstinline{eq(_,_)}.
+
+\begin{lstlisting}
+A = B :- true = eq(A,B).
+true = eq(A,B) :- A = B.
+
+\end{lstlisting}
+The second rule is possibly very expensive, with an unconstrained search and creating many new terms. The first rule will however typically compress the egraph.
+
+
+For further interesting material on equality reasoning over equality itself see [reference to dijkstra book, de gries equational logic]
+
+\subsection{Uniqueness quantification}
+Equality generating dependencies and tuple generating dependencies are two constraints from the theory of database schema. They are a method by which to model functional dependencies and foreign keys among other things.
+
+Equality generating dependencies can be directly modeled using native egraph \lstinline{=}. Tuple generating dependencies can be modelled using Skolemization.
+An axiom of the form $$ \forall x_1, \ldots, x_n, \phi(x_1, \ldots , x_n) \rightarrow \exists y_1, \ldots, y_m,  \psi(x_1,\ldots,x_n, y_1,\ldots, y_m) $$
+Can be converted into an axiom where $y_1 .. y_m$ are $n$ arity globally fresh function symbols (alpha renaming if necessary).
+$ \forall x_1, \ldots, x_n . \phi(x_1, ... , x_n) \rightarrow \psi(x_1, \ldots, x_n, y_1(x_1,\ldots,x_n),... y_m(x_1,\ldots,x_n))$
+Which in turn is modellable in Egglog0 as
+\begin{lstlisting}
+psi(X1,..., Xn, y1(X1,...,Xn), ... , ym(X1, ..., Xn)) :- psi(X1, ... ,Xn)
+\end{lstlisting}
+
+As pattern variables are implicitly universally quantified.
+
+Combining these two abilities allows one to express uniqueness quantification, which one finds for example in the definition of universal properties in category theory.
+
+$\exists!$.
+$$\forall x_1, ..., x_2 . \psi(x_1, ... , x_n) \rightarrow \exists! y1,y2,y3,y4 \psi(y_1,... y_n) $$
+
+$$\forall x_1, ..., x_2 . \psi(x_1, ... , x_n) \rightarrow \exists y1,..,ym \psi(y_1,... y_m)
+ \land \forall x_1, ..., x_n, y1,..,ym, x'_1, ..., x'_n, y'1,..,y'm,  . \psi(x_1, ... , x_n) \land \psi(y_1,... y_m) \land \psi(x_1, ... , x_n) \land \psi(y_1,... y_m) \rightarrow y_1 = y'_1 \land .... \land y_m = y'_m 
+ $$
+
+Diagrams chasing is considered to be difficult and yet fairly automatic activity. A large part of it consists of generating commuting squares (equalities), and finding places to instantiate universal properties. This search and instantiation can be encoded in Egglog0 clauses.  
+
+[reference to catnapp]
+
+\subsection{Generalized Algebraic Theories}
+[catlab and whatsies. the GAT guy cartmell]
+
+Algebraic theories are those described by equational axioms. An example is the theory of groups. Generalized algebraic theories extend these by introducing a limited version of dependent types. The types also have an equational theory and the equational axioms only hold between terms of the same type, therefore there may be typing obligations to discharge before one can use a rewrite rule.
+
+As an example, a monoidal category has morphisms of type Hom(a,b),
+
+The typing requirements of a GAT axiom naturally map to horn clauses. It is possible to build an encoding using type tagging [type tagging paper] and guards rather than multipatterns, but it is extremely burdensome and inefficient.
+
+TODO: possibly talk about kronecker product rewriting
+
+\section{Related Work}
+Egg-lite
+Souffle
+ATP
+SMT
+
+
+\section{Further Work}
+The most tantalizing of all are the places where we don't find obvious analogs of techniques of one domain in the other.
+- semi naive
+- Proofs
+- Efficient implementation
+- Magic Set
+
+Harrop Formula
+How to internalize Analysis, Extraction
+
+%% Acknowledgments
+\begin{acks}                            %% acks environment is optional
+                                        %% contents suppressed with 'anonymous'
+  %% Commands \grantsponsor{<sponsorID>}{<name>}{<url>} and
+  %% \grantnum[<url>]{<sponsorID>}{<number>} should be used to
+  %% acknowledge financial support and will be used by metadata
+  %% extraction tools.
+  Yihong Zhang
+Remy Yisu Wang,
+Max Willsey
+Zachary Tatlock
+Alessandro Cheli
+Cody Roux
+%  This material is based upon work supported by the
+%  \grantsponsor{GS100000001}{National Science
+%    Foundation}{http://dx.doi.org/10.13039/100000001} under Grant
+%  No.~\grantnum{GS100000001}{nnnnnnn} and Grant
+%%  No.~\grantnum{GS100000001}{mmmmmmm}.  Any opinions, findings, and
+%  conclusions or recommendations expressed in this material are those
+%  of the author and do not necessarily reflect the views of the
+%  National Science Foundation.
+\end{acks}
+
+
+%% Bibliography
+%\bibliography{bibfile}
+
+
+%% Appendix
+\appendix
+\section{Appendix}
+
+Text of appendix \ldots
+
+\end{document}
