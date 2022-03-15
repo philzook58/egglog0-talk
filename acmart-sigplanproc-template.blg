@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: acmart-sigplanproc-template.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: refs.bib
+Warning--I didn't find a database entry for "pullback2"
+Warning--I didn't find a database entry for "egg-lite"
+Warning--I didn't find a database entry for "souffle"
+Warning--I didn't find a database entry for "soufflepost2"
+Warning--I didn't find a database entry for "soufflepost3"
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 6 entries,
+            5959 wiz_defined-function locations,
+            1378 strings with 15800 characters,
+and the built_in function-call counts, 5884 in all, are:
+= -- 745
+> -- 215
+< -- 0
++ -- 69
+- -- 85
+* -- 393
+:= -- 650
+add.period$ -- 30
+call.type$ -- 6
+change.case$ -- 39
+chr.to.int$ -- 5
+cite$ -- 6
+duplicate$ -- 472
+empty$ -- 341
+format.name$ -- 83
+if$ -- 1337
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 7
+newline$ -- 110
+num.names$ -- 47
+pop$ -- 151
+preamble$ -- 1
+purify$ -- 91
+quote$ -- 0
+skip$ -- 171
+stack$ -- 0
+substring$ -- 422
+swap$ -- 38
+text.length$ -- 19
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 146
+warning$ -- 0
+while$ -- 42
+width$ -- 0
+write$ -- 159
+(There were 5 warnings)

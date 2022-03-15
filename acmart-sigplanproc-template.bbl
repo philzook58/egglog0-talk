@@ -1,0 +1,126 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{6}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Cartmell}{Cartmell}{1986}]%
+        {cartmell}
+\bibfield{author}{\bibinfo{person}{John Cartmell}.}
+  \bibinfo{year}{1986}\natexlab{}.
+\newblock \showarticletitle{Generalised algebraic theories and contextual
+  categories}.
+\newblock \bibinfo{journal}{\emph{Annals of Pure and Applied Logic}}
+  \bibinfo{volume}{32} (\bibinfo{year}{1986}), \bibinfo{pages}{209--243}.
+\newblock
+\showISSN{0168-0072}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/0168-0072(86)90053-9}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Patterson, Fairbanks, Baas, Brown, Halter,
+  Libkind, and Lynch}{Patterson et~al\mbox{.}}{2022}]%
+        {catlab}
+\bibfield{author}{\bibinfo{person}{Evan Patterson}, \bibinfo{person}{James
+  Fairbanks}, \bibinfo{person}{Andrew Baas}, \bibinfo{person}{Kristopher
+  Brown}, \bibinfo{person}{Micah~E Halter}, \bibinfo{person}{Sophie Libkind},
+  {and} \bibinfo{person}{Owen Lynch}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{title}{Catlab.jl: A framework for applied category theory}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.17605/OSF.IO/HMNFE}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Roux}{Roux}{2015}]%
+        {catnapp}
+\bibfield{author}{\bibinfo{person}{Cody Roux}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \bibinfo{title}{The Categorical Nearly Automatic Property Prover}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://github.com/codyroux/catnapp}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zhang, Wang, Willsey, and Tatlock}{Zhang
+  et~al\mbox{.}}{2022}]%
+        {rel_ematch}
+\bibfield{author}{\bibinfo{person}{Yihong Zhang}, \bibinfo{person}{Yisu~Remy
+  Wang}, \bibinfo{person}{Max Willsey}, {and} \bibinfo{person}{Zachary
+  Tatlock}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Relational E-Matching}.
+\newblock \bibinfo{journal}{\emph{Proc. ACM Program. Lang.}}
+  \bibinfo{volume}{6}, \bibinfo{number}{POPL}, Article \bibinfo{articleno}{35}
+  (\bibinfo{date}{jan} \bibinfo{year}{2022}), \bibinfo{numpages}{22}~pages.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3498696}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zucker}{Zucker}{2021a}]%
+        {pullback}
+\bibfield{author}{\bibinfo{person}{Philip Zucker}.}
+  \bibinfo{year}{2021}\natexlab{a}.
+\newblock \bibinfo{title}{Egglog 2: Automatically Proving the Pullback of a
+  Monic is Monic}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.philipzucker.com/egglog2-monic/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zucker}{Zucker}{2021b}]%
+        {naivesouffle}
+\bibfield{author}{\bibinfo{person}{Philip Zucker}.}
+  \bibinfo{year}{2021}\natexlab{b}.
+\newblock \bibinfo{title}{Naive E-graph Rewriting in Souffle Datalog}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.philipzucker.com/datalog-egraph-deux/}
+\showURL{%
+\tempurl}
+
+
+\end{thebibliography}
