@@ -153,7 +153,7 @@
 %% Note: \begin{abstract}...\end{abstract} environment must come
 %% before \maketitle command
 \begin{abstract}
-There are many striking similarities between \emph{equality saturation} \cite{egg} and \emph{Datalog} \cite{datalog}. This talk is about a prototype implementation Egglog0 built upon the e-graph framework library egg \cite{egg} extended with \emph{multipatterns} and the modeling power equality saturation gains with logic programming constructs.
+There are many striking similarities between \emph{equality saturation} \cite{egg} and \emph{Datalog} \cite{datalog}. This talk is about a prototype implementation called Egglog0 built upon the e-graph framework library egg \cite{egg} extended with \emph{multipatterns} and the modeling power equality saturation gains with the addition of logic programming constructs.
 \end{abstract}
 
 
@@ -242,13 +242,13 @@ Queries recover information out of the e-graph.
 ?- add(succ(zero),succ(Y)) = Z.
 \end{lstlisting}
 
-Queries are run after (possibly early) termination of the equality saturation process. They are implemented as multipatterns followed by extraction. A substitution dictionary of pattern variables to e-classes is returned from the multipattern. To print out a concrete ground term, a small representative term is extracted out of each variable's e-class.
+Queries are run after (possibly early) termination of the equality saturation process. They are implemented as multipatterns followed by extraction. A substitution dictionary of pattern variables to e-classes is returned from the multipattern. To print out a concrete ground term, a small representative term is extracted out of each variable's e-class in this dictionary.
 
 \section{Applications}
-Why bother with this extra expressivity? In this section we demonstrate a number of applications that are not easily expressible as equality saturation or Datalog on their own. With the upstreaming of multipatterns, these examples are expressible in mainline egg, albeit with a different syntax.
+Why bother with this extra expressivity? In this section we demonstrate a number of applications that are not easily expressible as equality saturation or Datalog on their own. With the upstreaming of multipatterns these examples are expressible in mainline egg, albeit with a different syntax.
 
 \subsection{Injectivity}
-One simple application is being able to express the axiom of injectivity of a constructor. This axiom is in some sense the dual of the congruence axiom which is applied automatically in the e-graph.
+One simple application is being able to express the axiom of injectivity of a constructor. This axiom is in some respects the dual of the congruence axiom which is applied automatically in the e-graph.
 
 \begin{lstlisting}
 X = Y, Xs = Ys :- cons(X,Xs) = cons(Y,Ys).
@@ -263,9 +263,10 @@ sub(Z,X) = Y :- add(X,Y) = Z
 It is possible to extract from the e-graph a term containing the least number of undesirable variables that are in the same e-class as a term \lstinline{x}, although Egglog0 does not currently implement this extraction.
 
 \subsection{Reflection and Equational Logic}
-Like Datalog, the presence of predicate "terms" in the e-graph database can be considered as an assertion of their truth. An alternative convention of modeling predicates as functions into \lstinline{Bool} allows one to manipulate and talk about predicates in the absence of knowledge of their truth. Instead, a predicate term being in the same e-class as the term \lstinline{true} can be seen as evidence of its truth. More interestingly, the lack of a predicate being in the e-graph cannot be seen as evidence of it's falsehood, whereas being in the same e-class as \lstinline{false} can be seen as evidence that the predicate has been determined to be definitely false. Equality saturation as a reasoning tool has constructive character in this sense. This is the analog of the situation in Datalog, where negation may only be considered in the presence of a stratification condition.
+Like Datalog, the presence of predicate "terms" in the e-graph database can be considered as an assertion of their truth. An alternative convention is to model predicates as functions into \lstinline{Bool}, allowing one to manipulate and talk about predicates in the absence of knowledge of their truth. Instead, a predicate term being in the same e-class as the term \lstinline{true} can be seen as evidence of its truth. More interestingly, the lack of a predicate being in the e-graph cannot be seen as evidence of it's falsehood, whereas being in the same e-class as \lstinline{false} can be seen as evidence that the predicate has been determined to be definitely false. Equality saturation as a reasoning tool has constructive character in this sense. This is related to the situation in Datalog where negation may only be considered in the presence of a stratification condition.
+
 This encoding allows for ordinary boolean algebraic manipulation of logical formula.
-One can reflect the notion of e-graph equality itself into a term \lstinline{eq(_,_)}.
+One can also reflect the notion of e-graph equality itself into a term \lstinline{eq(_,_)}.
 
 \begin{lstlisting}
 A = B :- true = eq(A,B).
@@ -276,7 +277,7 @@ There exist equational formulations of logic with an internalized algebraic noti
 
 \subsection{Uniqueness Quantification}
 Equality generating dependencies and tuple generating dependencies are two constraints from the theory of relational databases \cite{databases}.
-Equality generating dependencies can be directly modeled using native e-graph \lstinline{=} in the head of clauses.
+Equality generating dependencies can be directly modeled using native e-graph \lstinline{_=_} in the head of clauses.
 Tuple generating dependencies can be modeled using Skolemization.
 An axiom of the form \begin{equation}
 \begin{split}
@@ -293,8 +294,8 @@ psi(X1,...,Xn,y1(X1,...,Xn),...,ym(X1,...,Xn)) :- phi(X1, ... ,Xn)
 Combining these two abilities allows one to express uniqueness quantification $\exists!$, which one finds for example in the definition of universal properties in category theory. Diagram chasing is considered to be laborious and yet fairly automatic activity in category theory. A large part of it consists of reasoning about commuting paths (equalities), and finding places to instantiate universal properties\cite{catnapp}. This search and instantiation can be encoded in Egglog0 clauses \cite{pullback, pullback2}.
 
 \subsection{Generalized Algebraic Theories}
-Algebraic theories are those described by equational axioms for example the theory of groups. Generalized algebraic theories (GATs) extend these by introducing a limited version of dependent types \cite{catlab, cartmell}. The types also have an equational theory and the equational axioms only hold between terms of the same type, therefore there may be typing obligations to discharge before one can use an equality
-The typing requirements of a GAT axiom naturally map to Horn clauses. It is also possible to build an inefficient equational encoding using type tagging\cite{typetag} or sometimes twist the formulation to use guards rather than multipatterns \cite{monoidal}.
+Algebraic theories are those described by equational axioms, for example the theory of groups. Generalized algebraic theories (GATs) extend these by introducing a limited version of dependent types \cite{catlab, cartmell}. The types also have an equational theory and the equational axioms only hold between terms of the same type, therefore there may be typing obligations to discharge before one can use an equality.
+The typing requirements of GAT axioms naturally map to Horn clauses modulo equality. It is also possible to build an inefficient equational encoding using type tagging\cite{typetag} or twist the formulation to use guards rather than multipatterns \cite{monoidal}.
 
 \section{Related Work}
 This work draws on the ideas of Relational E-matching \cite{rel_ematch}
@@ -305,9 +306,9 @@ Souffle\cite{souffle} is a Datalog engine supporting algebraic datatypes, equiva
 
 \section{Further Work}
 The most tantalizing of all are the places where we don't quite understand the analogs of Datalog techniques in equality saturation.
-Two prominent examples are the magic set transformation which makes Datalog queries prune their bottom up search using the query and semi-naive evaluation which avoids a great deal of unnecessary recomputation \cite{databases}.
-In a different direction, one may also wish to extend to expressivity of the system as a theorem prover to Hereditary Harrop Formula \cite{miller_nadathur_2012}.
-Finally, a important question is how to naturally extend the syntax and implementation to internalize and express lattice analyses and extraction \cite{egg}.
+Two prominent examples are the magic set transformation, which makes Datalog queries prune their bottom up search using the query, and semi-naive evaluation, which avoids a great deal of unnecessary recomputation \cite{databases}.
+In a different direction, one may also wish to extend to expressivity of the system as a theorem prover towards hereditary Harrop formula \cite{miller_nadathur_2012}.
+Finally, a important question is how to naturally extend the syntax, semantics, and implementation to internalize and express lattice analyses and extraction \cite{egg}.
 
 %% Acknowledgments
 \begin{acks}                            %% acks environment is optional
