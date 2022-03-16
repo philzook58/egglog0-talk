@@ -6,55 +6,54 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: refs.bib
-Warning--I didn't find a database entry for "pullback2"
-Warning--I didn't find a database entry for "egg-lite"
-Warning--I didn't find a database entry for "souffle"
-Warning--I didn't find a database entry for "soufflepost2"
-Warning--I didn't find a database entry for "soufflepost3"
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 6 entries,
+Warning--empty address in souffle
+Warning--empty address in miller_nadathur_2012
+Warning--no journal in egg-lite
+Warning--page numbers missing in both pages and numpages fields in egg-lite
+You've used 18 entries,
             5959 wiz_defined-function locations,
-            1378 strings with 15800 characters,
-and the built_in function-call counts, 5884 in all, are:
-= -- 745
-> -- 215
+            1454 strings with 18010 characters,
+and the built_in function-call counts, 17696 in all, are:
+= -- 2098
+> -- 670
 < -- 0
-+ -- 69
-- -- 85
-* -- 393
-:= -- 650
-add.period$ -- 30
-call.type$ -- 6
-change.case$ -- 39
-chr.to.int$ -- 5
-cite$ -- 6
-duplicate$ -- 472
-empty$ -- 341
-format.name$ -- 83
-if$ -- 1337
-int.to.chr$ -- 3
++ -- 219
+- -- 243
+* -- 1278
+:= -- 1958
+add.period$ -- 94
+call.type$ -- 18
+change.case$ -- 117
+chr.to.int$ -- 15
+cite$ -- 22
+duplicate$ -- 1511
+empty$ -- 1079
+format.name$ -- 273
+if$ -- 4010
+int.to.chr$ -- 5
 int.to.str$ -- 1
-missing$ -- 7
-newline$ -- 110
-num.names$ -- 47
-pop$ -- 151
+missing$ -- 36
+newline$ -- 238
+num.names$ -- 145
+pop$ -- 506
 preamble$ -- 1
-purify$ -- 91
+purify$ -- 272
 quote$ -- 0
-skip$ -- 171
+skip$ -- 541
 stack$ -- 0
-substring$ -- 422
-swap$ -- 38
+substring$ -- 1268
+swap$ -- 137
 text.length$ -- 19
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 146
-warning$ -- 0
-while$ -- 42
+type$ -- 392
+warning$ -- 4
+while$ -- 126
 width$ -- 0
-write$ -- 159
-(There were 5 warnings)
+write$ -- 400
+(There were 4 warnings)

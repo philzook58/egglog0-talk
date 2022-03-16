@@ -16,6 +16,16 @@ articleno = {35},
 numpages = {22},
 keywords = {Relational Join Algorithms, E-matching}
 }
+
+@article{egg-lite,
+author = {Zhang, Yihong},
+title = {Your next e-graph framework looks like a Datalog},
+year = {2022},
+volume = {6},
+number = {PLDI},
+keywords = {Relational Join Algorithms, E-matching}
+}
+
 @misc{catlab,
   title={Catlab.jl: A framework for applied category theory},
   url={osf.io/hmnfe},
@@ -48,19 +58,136 @@ author = {John Cartmell}
 
 @misc{soufflehack,
  title={A Questionable Idea: Hacking findParent into Souffle with User Defined Functors}, 
- url={https://www.philipzucker.com/souffle-functor-hack/,
+ url={https://www.philipzucker.com/souffle-functor-hack/},
  journal={Hey There Buddo!}, 
- author={Zucker, Philip}, year={2022}, month={Mar}}} 
+ author={Zucker, Philip}, year={2022}, month={Mar}}
 
  @misc{pullback,
  title={Egglog 2: Automatically Proving the Pullback of a Monic is Monic}, 
  url={https://www.philipzucker.com/egglog2-monic/},
+ journal={Hey There Buddo!},
+ author={Zucker, Philip}, year={2021}, month={Aug}}
+
+ @misc{pullback2,
+ title={Egglog Examples: Pullbacks, SKI, Lists, and Arithmetic},
+ url={https://www.philipzucker.com/egglog-3/},
  journal={Hey There Buddo!}, 
  author={Zucker, Philip}, year={2021}, month={Aug}}
+
+
 
   @misc{catnapp,
  title={The Categorical Nearly Automatic Property Prover}, 
  url={https://github.com/codyroux/catnapp},
  author={Roux, Cody}, year={2015}, month={Aug}}
 
+ @misc{monoidal,
+ title={Rewriting Monoidal Categories in the Browser with Egg}, 
+ url={https://www.philipzucker.com/rust-category/},
+ journal={Hey There Buddo!}, 
+ author={Zucker, Philip}, year={2021}, month={Mar}}
 
+@InProceedings{typetag,
+author="Blanchette, Jasmin Christian
+and B{\"o}hme, Sascha
+and Popescu, Andrei
+and Smallbone, Nicholas",
+editor="Piterman, Nir
+and Smolka, Scott A.",
+title="Encoding Monomorphic and Polymorphic Types",
+booktitle="Tools and Algorithms for the Construction and Analysis of Systems",
+year="2013",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="493--507",
+abstract="Most automatic theorem provers are restricted to untyped logics, and existing translations from typed logics are bulky or unsound. Recent research proposes monotonicity as a means to remove some clutter. Here we pursue this approach systematically, analysing formally a variety of encodings that further improve on efficiency while retaining soundness and completeness. We extend the approach to rank-1 polymorphism and present alternative schemes that lighten the translation of polymorphic symbols based on the novel notion of ``cover''. The new encodings are implemented, and partly proved correct, in Isabelle/HOL. Our evaluation finds them vastly superior to previous schemes.",
+isbn="978-3-642-36742-7"
+}
+@inproceedings{souffle,
+  author    = {Herbert Jordan and
+               Bernhard Scholz and
+               Pavle Subotic},
+  editor    = {Swarat Chaudhuri and
+               Azadeh Farzan},
+  title     = {Souffl{\'{e}}: On Synthesis of Program Analyzers},
+  booktitle = {Computer Aided Verification - 28th International Conference, {CAV}
+               2016, Toronto, ON, Canada, July 17-23, 2016, Proceedings, Part {II}},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {9780},
+  pages     = {422--430},
+  publisher = {Springer},
+  year      = {2016},
+  url       = {https://doi.org/10.1007/978-3-319-41540-6\_23},
+  doi       = {10.1007/978-3-319-41540-6\_23},
+  timestamp = {Tue, 14 May 2019 10:00:43 +0200},
+  biburl    = {https://dblp.org/rec/conf/cav/JordanSS16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@book{miller_nadathur_2012, place={Cambridge}, title={Programming with Higher-Order Logic}, DOI={10.1017/CBO9781139021326}, publisher={Cambridge University Press}, author={Miller, Dale and Nadathur, Gopalan}, year={2012}}
+@article{egg,
+author = {Willsey, Max and Nandi, Chandrakana and Wang, Yisu Remy and Flatt, Oliver and Tatlock, Zachary and Panchekha, Pavel},
+title = {Egg: Fast and Extensible Equality Saturation},
+year = {2021},
+issue_date = {January 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {5},
+number = {POPL},
+url = {https://doi.org/10.1145/3434304},
+doi = {10.1145/3434304},
+abstract = {An e-graph efficiently represents a congruence relation over many expressions. Although they were originally developed in the late 1970s for use in automated theorem provers, a more recent technique known as equality saturation repurposes e-graphs to implement state-of-the-art, rewrite-driven compiler optimizations and program synthesizers. However, e-graphs remain unspecialized for this newer use case. Equality saturation workloads exhibit distinct characteristics and often require ad-hoc e-graph extensions to incorporate transformations beyond purely syntactic rewrites.  This work contributes two techniques that make e-graphs fast and extensible, specializing them to equality saturation. A new amortized invariant restoration technique called rebuilding takes advantage of equality saturation's distinct workload, providing asymptotic speedups over current techniques in practice. A general mechanism called e-class analyses integrates domain-specific analyses into the e-graph, reducing the need for ad hoc manipulation.  We implemented these techniques in a new open-source library called egg. Our case studies on three previously published applications of equality saturation highlight how egg's performance and flexibility enable state-of-the-art results across diverse domains.},
+journal = {Proc. ACM Program. Lang.},
+month = {jan},
+articleno = {23},
+numpages = {29},
+keywords = {e-graphs, equality saturation}
+}
+
+@ARTICLE{datalog,
+  author={Ceri, S. and Gottlob, G. and Tanca, L.},
+  journal={IEEE Transactions on Knowledge and Data Engineering}, 
+  title={What you always wanted to know about Datalog (and never dared to ask)}, 
+  year={1989},
+  volume={1},
+  number={1},
+  pages={146-166},
+  doi={10.1109/69.43410}}
+
+
+@book{Dijkstra1990,
+author="Dijkstra, Edsger W.
+and Schotten, Carel S.",
+title="Predicate Calculus and Program Semantics",
+year="1990",
+publisher="Springer New York",
+address="New York, NY",
+abstract="The proofs in this book are much more calculational than we were used to only a few years ago. As we shall explain later, the theorems are (or could be) formulated as boolean expressions, for which, in principle, true and false are the possible values; the proofs consist in calculations evaluating these boolean expressions to true. We shall return to this later, focussing, for the time being, our attention on some of the notational consequences of this approach.",
+isbn="978-1-4612-3228-5",
+doi="10.1007/978-1-4612-3228-5_1",
+url="https://doi.org/10.1007/978-1-4612-3228-5_1"
+}
+
+@book{Gries1993,
+author="Gries, David
+and Schneider, Fred B.",
+title="A Logical Approach to Discrete Math",
+year="1993",
+publisher="Springer New York",
+address="New York, NY",
+abstract="Mathematics can be used to represent, or model, the world. This is because mathematics provides a way to represent relationships that is concise, precise, and well-suited to manipulations for revealing insights about the objects being modeled. For example, the equation{\$}{\$}e = m {\backslash}cdot {\{}c^2{\}}{\$}{\$}was Albert Einstein's way of expressing a belief about the relationship between energy e and mass m (c denotes the speed of light). The laws of planetary motion, or at least models of these laws, are used in launching satellites and keeping them in orbit. Social scientists employ mathematics, especially statistics, in understanding, analyzing, and making predictions about the behavior of society. Mathematical models help in anticipating the stock market and the weather. Since all areas of science and engineering employ mathematical models of one kind or another, it is not surprising that much time is spent building, manipulating, and analyzing models.",
+isbn="978-1-4757-3837-7",
+doi="10.1007/978-1-4757-3837-7_1",
+url="https://doi.org/10.1007/978-1-4757-3837-7_1"
+}
+
+@book{databases,
+author = {Abiteboul, Serge and Hull, Richard and Vianu, Victor},
+title = {Foundations of Databases: The Logical Level},
+year = {1995},
+isbn = {0201537710},
+publisher = {Addison-Wesley Longman Publishing Co., Inc.},
+address = {USA},
+edition = {1st},
+abstract = {From the Publisher:Over the past two decades, the theory concerning the logical level of database management systems has matured and become an elegant and robust piece of science. Foundations of Databases presents indepth coverage of this theory and surveys several emerging topics. Written by three leading researchers, this advanced text presents a unifying and contemporary perspective on the field. A major effort in writing the book has been to highlight the intuitions behind the theoretical development.}
+}

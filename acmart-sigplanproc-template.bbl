@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{6}
+\begin{thebibliography}{18}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -37,6 +37,36 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
+\bibitem[\protect\citeauthoryear{Abiteboul, Hull, and Vianu}{Abiteboul
+  et~al\mbox{.}}{1995}]%
+        {databases}
+\bibfield{author}{\bibinfo{person}{Serge Abiteboul}, \bibinfo{person}{Richard
+  Hull}, {and} \bibinfo{person}{Victor Vianu}.}
+  \bibinfo{year}{1995}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Foundations of Databases: The Logical
+  Level} (\bibinfo{edition}{1st} ed.)}.
+\newblock \bibinfo{publisher}{Addison-Wesley Longman Publishing Co., Inc.},
+  \bibinfo{address}{USA}.
+\newblock
+\showISBNx{0201537710}
+
+
+\bibitem[\protect\citeauthoryear{Blanchette, B{\"o}hme, Popescu, and
+  Smallbone}{Blanchette et~al\mbox{.}}{2013}]%
+        {typetag}
+\bibfield{author}{\bibinfo{person}{Jasmin~Christian Blanchette},
+  \bibinfo{person}{Sascha B{\"o}hme}, \bibinfo{person}{Andrei Popescu}, {and}
+  \bibinfo{person}{Nicholas Smallbone}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Encoding Monomorphic and Polymorphic Types}. In
+  \bibinfo{booktitle}{\emph{Tools and Algorithms for the Construction and
+  Analysis of Systems}}, \bibfield{editor}{\bibinfo{person}{Nir Piterman} {and}
+  \bibinfo{person}{Scott~A. Smolka}} (Eds.). \bibinfo{publisher}{Springer
+  Berlin Heidelberg}, \bibinfo{address}{Berlin, Heidelberg},
+  \bibinfo{pages}{493--507}.
+\newblock
+\showISBNx{978-3-642-36742-7}
+
+
 \bibitem[\protect\citeauthoryear{Cartmell}{Cartmell}{1986}]%
         {cartmell}
 \bibfield{author}{\bibinfo{person}{John Cartmell}.}
@@ -49,6 +79,84 @@
 \showISSN{0168-0072}
 \urldef\tempurl%
 \url{https://doi.org/10.1016/0168-0072(86)90053-9}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Ceri, Gottlob, and Tanca}{Ceri
+  et~al\mbox{.}}{1989}]%
+        {datalog}
+\bibfield{author}{\bibinfo{person}{S. Ceri}, \bibinfo{person}{G. Gottlob},
+  {and} \bibinfo{person}{L. Tanca}.} \bibinfo{year}{1989}\natexlab{}.
+\newblock \showarticletitle{What you always wanted to know about Datalog (and
+  never dared to ask)}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Knowledge and Data
+  Engineering}} \bibinfo{volume}{1}, \bibinfo{number}{1}
+  (\bibinfo{year}{1989}), \bibinfo{pages}{146--166}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/69.43410}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Dijkstra and Schotten}{Dijkstra and
+  Schotten}{1990}]%
+        {Dijkstra1990}
+\bibfield{author}{\bibinfo{person}{Edsger~W. Dijkstra} {and}
+  \bibinfo{person}{Carel~S. Schotten}.} \bibinfo{year}{1990}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Predicate Calculus and Program Semantics}}.
+\newblock \bibinfo{publisher}{Springer New York}, \bibinfo{address}{New York,
+  NY}.
+\newblock
+\showISBNx{978-1-4612-3228-5}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-1-4612-3228-5_1}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Gries and Schneider}{Gries and
+  Schneider}{1993}]%
+        {Gries1993}
+\bibfield{author}{\bibinfo{person}{David Gries} {and} \bibinfo{person}{Fred~B.
+  Schneider}.} \bibinfo{year}{1993}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{A Logical Approach to Discrete Math}}.
+\newblock \bibinfo{publisher}{Springer New York}, \bibinfo{address}{New York,
+  NY}.
+\newblock
+\showISBNx{978-1-4757-3837-7}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-1-4757-3837-7_1}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Jordan, Scholz, and Subotic}{Jordan
+  et~al\mbox{.}}{2016}]%
+        {souffle}
+\bibfield{author}{\bibinfo{person}{Herbert Jordan}, \bibinfo{person}{Bernhard
+  Scholz}, {and} \bibinfo{person}{Pavle Subotic}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Souffl{\'{e}}: On Synthesis of Program Analyzers}.
+  In \bibinfo{booktitle}{\emph{Computer Aided Verification - 28th International
+  Conference, {CAV} 2016, Toronto, ON, Canada, July 17-23, 2016, Proceedings,
+  Part {II}}} \emph{(\bibinfo{series}{Lecture Notes in Computer Science},
+  Vol.~\bibinfo{volume}{9780})}, \bibfield{editor}{\bibinfo{person}{Swarat
+  Chaudhuri} {and} \bibinfo{person}{Azadeh Farzan}} (Eds.).
+  \bibinfo{publisher}{Springer}, \bibinfo{pages}{422--430}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-3-319-41540-6\_23}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Miller and Nadathur}{Miller and
+  Nadathur}{2012}]%
+        {miller_nadathur_2012}
+\bibfield{author}{\bibinfo{person}{Dale Miller} {and} \bibinfo{person}{Gopalan
+  Nadathur}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Programming with Higher-Order Logic}}.
+\newblock \bibinfo{publisher}{Cambridge University Press}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1017/CBO9781139021326}
 \showDOI{\tempurl}
 
 
@@ -78,6 +186,32 @@
 \url{https://github.com/codyroux/catnapp}
 \showURL{%
 \tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Willsey, Nandi, Wang, Flatt, Tatlock, and
+  Panchekha}{Willsey et~al\mbox{.}}{2021}]%
+        {egg}
+\bibfield{author}{\bibinfo{person}{Max Willsey}, \bibinfo{person}{Chandrakana
+  Nandi}, \bibinfo{person}{Yisu~Remy Wang}, \bibinfo{person}{Oliver Flatt},
+  \bibinfo{person}{Zachary Tatlock}, {and} \bibinfo{person}{Pavel Panchekha}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Egg: Fast and Extensible Equality Saturation}.
+\newblock \bibinfo{journal}{\emph{Proc. ACM Program. Lang.}}
+  \bibinfo{volume}{5}, \bibinfo{number}{POPL}, Article \bibinfo{articleno}{23}
+  (\bibinfo{date}{jan} \bibinfo{year}{2021}), \bibinfo{numpages}{29}~pages.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3434304}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zhang}{Zhang}{2022}]%
+        {egg-lite}
+\bibfield{author}{\bibinfo{person}{Yihong Zhang}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Your next e-graph framework looks like a Datalog}.
+\newblock  \bibinfo{volume}{6}, \bibinfo{number}{PLDI} (\bibinfo{year}{2022}).
+\newblock
 
 
 \bibitem[\protect\citeauthoryear{Zhang, Wang, Willsey, and Tatlock}{Zhang
@@ -111,14 +245,56 @@
 
 
 \bibitem[\protect\citeauthoryear{Zucker}{Zucker}{2021b}]%
-        {naivesouffle}
+        {pullback2}
 \bibfield{author}{\bibinfo{person}{Philip Zucker}.}
   \bibinfo{year}{2021}\natexlab{b}.
+\newblock \bibinfo{title}{Egglog Examples: Pullbacks, SKI, Lists, and
+  Arithmetic}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.philipzucker.com/egglog-3/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zucker}{Zucker}{2021c}]%
+        {naivesouffle}
+\bibfield{author}{\bibinfo{person}{Philip Zucker}.}
+  \bibinfo{year}{2021}\natexlab{c}.
 \newblock \bibinfo{title}{Naive E-graph Rewriting in Souffle Datalog}.
 \newblock
 \newblock
 \urldef\tempurl%
 \url{https://www.philipzucker.com/datalog-egraph-deux/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zucker}{Zucker}{2021d}]%
+        {monoidal}
+\bibfield{author}{\bibinfo{person}{Philip Zucker}.}
+  \bibinfo{year}{2021}\natexlab{d}.
+\newblock \bibinfo{title}{Rewriting Monoidal Categories in the Browser with
+  Egg}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.philipzucker.com/rust-category/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zucker}{Zucker}{2022}]%
+        {soufflehack}
+\bibfield{author}{\bibinfo{person}{Philip Zucker}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{title}{A Questionable Idea: Hacking findParent into Souffle
+  with User Defined Functors}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.philipzucker.com/souffle-functor-hack/}
 \showURL{%
 \tempurl}
 
