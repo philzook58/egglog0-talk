@@ -153,7 +153,7 @@
 %% Note: \begin{abstract}...\end{abstract} environment must come
 %% before \maketitle command
 \begin{abstract}
-There are many striking similarities between \emph{equality saturation} \cite{egg} and \emph{Datalog} \cite{datalog}. This talk is about a prototype implementation called Egglog0 built upon the e-graph framework library egg \cite{egg} extended with \emph{multipatterns} and the modeling power equality saturation gains with the addition of logic programming constructs.
+There are many striking similarities between \emph{equality saturation} \cite{egg} and \emph{Datalog} \cite{datalog}. This talk is about a prototype implementation called Egglog0\footnote{\url{https://github.com/philzook58/egglog}} built upon the e-graph framework library egg \cite{egg} extended with \emph{multipatterns} and the modeling power equality saturation gains with the addition of logic programming constructs.
 \end{abstract}
 
 
@@ -307,7 +307,7 @@ Souffle\cite{souffle} is a Datalog engine supporting algebraic datatypes, equiva
 \section{Further Work}
 The most tantalizing of all are the places where we don't quite understand the analogs of Datalog techniques in equality saturation.
 Two prominent examples are the magic set transformation, which makes Datalog queries prune their bottom up search using the query, and semi-naive evaluation, which avoids a great deal of unnecessary recomputation \cite{databases}.
-In a different direction, one may also wish to extend to expressivity of the system as a theorem prover towards hereditary Harrop formula \cite{miller_nadathur_2012}.
+In a different direction, one may also wish to extend the expressivity of the system as a theorem prover towards hereditary Harrop formula \cite{miller_nadathur_2012}.
 Finally, a important question is how to naturally extend the syntax, semantics, and implementation to internalize and express lattice analyses and extraction \cite{egg}.
 
 %% Acknowledgments
