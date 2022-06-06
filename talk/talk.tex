@@ -1,0 +1,240 @@
+\documentclass{beamer}
+\usepackage{listings}
+\usepackage{bussproofs}
+%Information to be included in the title page:
+\title{Logging an Egg:} 
+\subtitle{Datalog on E-Graphs}   
+\author{Philip Zucker}
+% \email{pzucker@draper.com} 
+\institute{Draper Laboratory}
+\date{June 13, 2022}
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+\begin{frame}[fragile]
+\frametitle{Datalog : Databases, Logic, and Proofs.}
+
+  $$\forall x,y. edge(x,y) \implies path(x,y)$$
+   \begin{prooftree}
+        \AxiomC{edge(x,y)}
+        \UnaryInfC{path(x,y)}
+        \end{prooftree}
+\begin{lstlisting}
+        path(X, Y) :- edge(X, Y).
+        path(X, Y) :- path(X, Z), edge(Z, Y).
+        \end{lstlisting} 
+        Search right hand side in database. Insert left side. Repeat.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Datalog: Applications}
+    
+    \begin{itemize}
+        \item Graph Problems % Recursion is necessary. Breadth first search
+        \item Worklist Algorithms
+        \item You can program in it. Explicit control flow
+        \item Mutually Recursive Analyses
+        \item Program Analysis %\footnote{\url{https://souffle-lang.github.io/tutorial\#data-flow-analysis-example}}
+            \begin{itemize}
+                \item Doop \footnote{\url{https://bitbucket.org/yanniss/doop/src/master/}}
+                \item DDisasm \footnote{\url{https://github.com/GrammaTech/ddisasm}}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Datalog vs Prolog}
+    \begin{itemize}
+        \item Pattern matching vs Unification
+        \item Top down vs Bottom up
+        \item Complete vs Incomplete Search
+        \item Tabling
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{E-Graphs}
+\begin{itemize}
+   \item Datastructure for terms and equalities
+   \item Egg \footnote{\url{https://egraphs-good.github.io/}}: Efficient Rust library
+   \item Term Rewriting $ ?a + 0 \rightarrow ?a$
+   \item An E-Graph Never Forgets
+   \item Maximize sharing up and down.
+  % \item Bipartite graph of enodes and eclasses
+   \item Rule ordering
+   \item $?a + (?b + ?c) = (?a + ?b) + ?c$. $?a + -?a = 0$
+   \item $x + (-x + 10)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Applications of E-Graphs}
+    \begin{itemize}
+       \item SMT and other Theorem Proving
+        \item Compiler Optimization. PEG \footnote{\url{https://rosstate.org/publications/eqsat/}}
+        \item Herbie \footnote{\url{https://herbie.uwplse.org/}}
+        \item Query Optimization
+        \item Szalinski - CAD
+       \item YOGO \footnote{\url{https://www.jameskoppel.com/files/papers/yogo-preprint.pdf}}
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]
+    \frametitle{Egglog0\footnote{\url{https://www.philipzucker.com/egglog/}}}
+    \begin{itemize}
+        \item E-Graphs are a Database
+        \item The database holds terms and equality relation
+        \item Supports ordinary datalog with terms
+        \item Pattern variables bind to eclasses
+        \item Rules: query using RHS (e-matching multipattern), instantiate and insert LHS
+        \item Special equality $=$ is E-graph Equality
+        \begin{lstlisting}
+            add(Y,X) = E :- add(X,Y) = E.
+        \end{lstlisting}
+        \item Queries e-match and return all results.
+        \begin{lstlisting}
+            ?- add(succ(zero),succ(Y)) = Z.
+        \end{lstlisting}
+    \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Egg Multipatterns}
+    \begin{itemize}
+        \item Upstreamed to egg\footnote{\url{https://github.com/egraphs-good/egg/pull/168}}.
+        \item Multipatterns vs Guards %: Multipatterns can bind new variables.
+        \item Threads e-matching compiler env binding between patterns.
+        %pattern names to runtime env slots. Multipatterns threads it between patterns
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Demo}
+% Maybe I should 
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Injectivity}
+    \begin{itemize}
+        \item $\forall a, b. f(a) = f(b) \implies a = b$
+        %\item $\forall a, b. a != b \implies f(a) != f(b)$
+        \item Example: Constructors, Negation, constant addition
+        \item Unification
+    \end{itemize}
+    \begin{lstlisting}
+        X = Y, Xs = Ys :- cons(X,Xs) = cons(Y,Ys).
+        X = Y :- X + Z = Y + Z.
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Memory Simplification\footnote{\url{https://www.philipzucker.com/egglog/?example=mem.pl}}}
+    \begin{itemize}
+     %   \item Disequality reasoning and injectivity
+        \item Alias Analysis + Simplification
+        \item SMTlib theory of arrays %/ McCarthy
+        \item Many SMT theories are expressible as Horn Clauses (side conditions)
+    \end{itemize}
+    \begin{lstlisting}[
+        basicstyle=\tiny, %or \small or \footnotesize etc.
+    ]
+//select grabs stored value
+V <- select(A ,store(A, V, Mem)).
+
+//select ignores different addresses
+select(A1,Mem) = E :- select(A1,store(A2,V,Mem)) = E, neq(A1,A2).
+
+//non aliasing writes commute
+store(A2,V2, store(A1,V1,Mem)) = E :- store(A1,V1, store(A2,V2,Mem)) = E, neq(A1,A2).
+
+//Aliasing Writes destroy old value.
+store(A, V1, Mem) <- store(A, V1, store(A,V2,Mem)).
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Equation Solving}
+    \begin{itemize}
+        \item Isolation
+        \item Extract terms without variables
+    \end{itemize}
+    \begin{lstlisting}
+        sub(Z,X) = Y :- add(X,Y) = Z
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Reflection}
+    \begin{itemize}
+        \item Hypothetical reasoning
+        \item Boolean algebraic reasoning
+    \end{itemize}
+    \begin{lstlisting}
+        A = B :- true = eq(A,B).
+        true = eq(A,B) :- A = B.    
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Uniqueness Quantification\footnote{\url{https://www.philipzucker.com/egglog/?example=cat1.pl}}}
+    \begin{itemize}
+        \item Common in universal constructions in category theory
+        \item Skolemize existentials $\forall x, P(x) \implies \exists y, Q(x,y)$  becomes
+                $\forall x, P(x) \implies Q(x,f(x))$
+        \item Uniqueness Property $\forall a, b. P(a) \land P(b) \implies a = b$
+    \end{itemize}
+   % $ \forall x_1, \ldots, x_n, \phi(x_1, \ldots , x_n) \implies  \exists y_1, \ldots, y_m,  \psi(x_1,\ldots,x_n, y_1, \ldots, y_m)  $
+        % ALT: $$ \forall \{x_n\}, \phi(\{x_n\}) \implies \exists \{y_m\},  \psi(\{x_n\}, \{y_m\}) $$
+    %    can be converted into an axiom where $y_1 \ldots y_m$ are $n$-arity globally fresh function symbols.
+        
+     %    \begin{lstlisting}
+     %   psi(X1,...,Xn,y1(X1,...,Xn),...,ym(X1,...,Xn)) :- phi(X1, ... ,Xn)
+     %   \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Related Work}
+    \begin{itemize} 
+        \item Relational E-Matching \footnote{\url{https://arxiv.org/abs/2108.02290}}
+        \item SMT Multipatterns
+        \item Souffle Egg \footnote{\url{https://www.hytradboi.com/2022/writing-part-of-a-compiler-in-datalog}}
+        \item Egg-lite
+    \end{itemize}
+\end{frame}
+
+%\begin{frame}
+%    \frametitle{Work to do}
+%    \begin{itemize}
+%        \item Semi-Naive
+%        \item Efficient Indexing
+%        \item Harrop
+%    \end{itemize}
+%\end{frame}
+
+\begin{frame}
+    \frametitle{Questions?}
+    \begin{itemize}
+        \item Thanks to Yihong Zhang, Remy Yisu
+        Wang, Max Willsey, Zachary Tatlock, Alessandro Cheli, Cody
+        Roux, James Fairbanks, and Evan Patterson for their helpful
+        discussions.
+        \item DARPA Grant 
+       % \item Refs
+    \end{itemize}
+\end{frame}
+
+
+
+
+\end{document}
